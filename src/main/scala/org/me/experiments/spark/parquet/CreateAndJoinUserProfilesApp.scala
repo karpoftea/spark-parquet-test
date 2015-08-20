@@ -36,12 +36,12 @@ object CreateAndJoinUserProfilesApp extends WithLocalSparkContext {
         (dpId, userProfile)
       }).toMap
       val profile: IntegralProfile = IntegralProfile(metadata, profiles)
-      println(s"Profile:$profile")
+      println(s"my.experiment.parquet.Profile:$profile")
 
       profile
     })
       .toDF()
-      .write.parquet("/tmp/spark-parquet-test/joined")
+      .write.json("/tmp/spark-parquet-test/joined-parquet")
   }
 
   def toProfileMetadata(r: Row): ProfileMetadata = {
