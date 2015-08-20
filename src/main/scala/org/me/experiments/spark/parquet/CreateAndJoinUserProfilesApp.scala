@@ -41,7 +41,7 @@ object CreateAndJoinUserProfilesApp extends WithLocalSparkContext {
       profile
     })
       .toDF()
-      .write.json("/tmp/spark-parquet-test/joined-parquet")
+      .write.parquet("/tmp/spark-parquet-test/joined-parquet")
   }
 
   def toProfileMetadata(r: Row): ProfileMetadata = {

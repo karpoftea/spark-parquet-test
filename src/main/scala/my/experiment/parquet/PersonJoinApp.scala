@@ -22,7 +22,7 @@ object PersonJoinApp extends WithLocalSparkContext {
     import sqlContext.implicits._
 
     val hhDF: DataFrame = createHHProfiles.toDF().as("a")
-    hhDF.write.parquet("/tmp/spark-test-parquet/prq")
+//    hhDF.write.parquet("/tmp/spark-test-parquet/prq")
 
     val aiDF: DataFrame = createAidataProfiles.toDF().as("b")
 
@@ -59,7 +59,10 @@ object PersonJoinApp extends WithLocalSparkContext {
       IntegralProfile(
         Metadata("1.2", System.currentTimeMillis()),
         Map("ai" -> Profile(
-          Map("age" -> AttributeValue("64", 0.1f), "speciality" -> AttributeValue("driver", 1.0f)),
+          Map(
+            "age" -> AttributeValue("64", 0.1f),
+            "speciality" -> AttributeValue("driver", 1.0f)
+          ),
           Map("bmw" -> InterestValue(1.0f), "audi" -> InterestValue(0.9f))
         ))
       ),
